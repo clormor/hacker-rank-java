@@ -45,6 +45,8 @@ public class BitSetExample {
                 if (a == 1 && b == 2) b1.xor(b2);
                 if (a == 2 && b == 1) b2.xor(b1);
                 break;
+            default:
+                throw new IllegalArgumentException("Invalid instruction");
         }
         return String.format("%d %d%n", b1.cardinality(), b2.cardinality());
     }
