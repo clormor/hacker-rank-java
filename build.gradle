@@ -105,15 +105,15 @@ javadoc {
 
 modifyPom {
     project {
-        name 'Hacker Rank Solutions'
+        name 'Hacker Rank Java Solutions'
         description 'Contains java solutions for Hacker Rank problems'
-        url 'https://github.com/clormor/hacker-rank'
+        url 'https://github.com/clormor/hacker-rank-java'
         inceptionYear '2019'
 
         scm {
-            url 'https://github.com/clormor/hacker-rank'
-            connection 'git@github.com:clormor/hacker-rank.git'
-            developerConnection 'git@github.com:clormor/hacker-rank.git'
+            url 'https://github.com/clormor/hacker-rank-java'
+            connection 'git@github.com:clormor/hacker-rank-java.git'
+            developerConnection 'git@github.com:clormor/hacker-rank-java.git'
         }
 
         licenses {
