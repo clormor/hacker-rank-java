@@ -35,11 +35,11 @@ public abstract class AbstractHashingExample {
         return result.toString();
     }
 
-    String altPrintHash(String input, int numChars) {
+    public String altPrintHash(String input) {
         byte[] output = digest(input);
         String format = new StringBuilder()
                 .append("%0")
-                .append(numChars)
+                .append(getExpectedLength())
                 .append("x")
                 .toString();
 
@@ -47,5 +47,9 @@ public abstract class AbstractHashingExample {
         return String.format(format, new BigInteger(1, output));
     }
 
-    public abstract String altPrintHash(String input);
+    /**
+     * The expected length (in 0-padded, hexadecimal characters) of a cryptographic hash
+     * @return the length in characters of the expected size of a hash (in 0-padded hex).
+     */
+    public abstract int getExpectedLength();
 }

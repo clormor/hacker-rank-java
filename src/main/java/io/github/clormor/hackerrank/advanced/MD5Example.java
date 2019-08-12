@@ -2,13 +2,14 @@ package io.github.clormor.hackerrank.advanced;
 
 public class MD5Example extends AbstractHashingExample {
 
+    static final int expectedLength = 32;
+
     public MD5Example() {
         super(MD5);
     }
 
     @Override
-    public String altPrintHash(String input) {
-        return altPrintHash(input, 32);
+    public int getExpectedLength() {
+        return expectedLength;
     }
-
 }
