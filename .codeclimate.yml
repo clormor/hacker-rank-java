@@ -4,4 +4,5 @@ engines:
     checks:
       com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck:
         enabled: false
-
+  fixme:
+    enabled: true
