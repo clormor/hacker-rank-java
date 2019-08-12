@@ -48,7 +48,7 @@ public abstract class AbstractHashingExample {
     }
 
     /**
-     * The expected length (in 0-padded, hexadecimal characters) of a cryptographic hash
+     * The expected length (in 0-padded, hexadecimal characters) of a cryptographic hash.
      * @return the length in characters of the expected size of a hash (in 0-padded hex).
      */
     public abstract int getExpectedLength();

@@ -15,6 +15,9 @@ engines:
       # allow multiple variables to be declared on one line in this repo
       com.puppycrawl.tools.checkstyle.checks.coding.MultipleVariableDeclarationsCheck:
         enabled: false
+      # allow lazy block statements in this repo
+      com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck:
+        enabled: false
   fixme:
     enabled: true
 
