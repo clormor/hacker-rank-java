@@ -13,23 +13,3 @@ public class FoodFactory {
         }
     }
 }
-
-interface Food {
-    static final String pizzaType = "Someone ordered a Fast Food!";
-    static final String cakeType = "Someone ordered a Dessert!";
-    public String getType();
-}
-
-class Pizza implements Food {
-    @Override
-    public String getType() {
-        return pizzaType;
-    }
-}
-
-class Cake implements Food {
-    @Override
-    public String getType() {
-        return cakeType;
-    }
-}
