@@ -1,4 +1,4 @@
-# hacker-rank
+# hacker-rank-java
 
 <p align="center">
     <a href="https://circleci.com/gh/clormor/hacker-rank-java">
