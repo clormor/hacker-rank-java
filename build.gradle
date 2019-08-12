@@ -21,6 +21,7 @@ plugins {
 }
 
 apply plugin: 'com.bmuschko.nexus'
+apply plugin: 'io.codearte.nexus-staging'
 
 ext.nexusUsername = "$System.env.NEXUS_USER"
 ext.nexusPassword = "$System.env.NEXUS_PASSWORD"
@@ -92,6 +93,10 @@ release {
         // push releases to a separate release branch
         pushReleaseVersionBranch = 'release'
     }
+}
+
+nexusStaging {
+    delayBetweenRetriesInMillis = 5000
 }
 
 modifyPom {
