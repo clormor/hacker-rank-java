@@ -3,7 +3,7 @@ package io.github.clormor.hackerrank.advanced;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class TestReflectionExample {
 
@@ -16,22 +16,15 @@ public class TestReflectionExample {
 
     @Test
     public void test_get_methods() {
-        String result = r.getStudentMethods();
-        String expected = new StringBuilder()
-                .append("getEmail")
-                .append(System.lineSeparator())
-                .append("getId")
-                .append(System.lineSeparator())
-                .append("getName")
-                .append(System.lineSeparator())
-                .append("setEmail")
-                .append(System.lineSeparator())
-                .append("setId")
-                .append(System.lineSeparator())
-                .append("setName")
-                .append(System.lineSeparator())
-                .toString();
-
-        assertEquals(expected, result);
+        String result = r.getObjectMethods();
+        assertTrue(result.contains("clone\n"));
+        assertTrue(result.contains("equals\n"));
+        assertTrue(result.contains("finalize\n"));
+        assertTrue(result.contains("getClass\n"));
+        assertTrue(result.contains("hashCode\n"));
+        assertTrue(result.contains("notify\n"));
+        assertTrue(result.contains("notifyAll\n"));
+        assertTrue(result.contains("toString\n"));
+        assertTrue(result.contains("wait\n"));
     }
 }

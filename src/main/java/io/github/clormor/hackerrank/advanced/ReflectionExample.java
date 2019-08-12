@@ -5,8 +5,8 @@ import java.util.Arrays;
 
 public class ReflectionExample {
 
-    public String getStudentMethods() {
-        Method[] methods = Student.class.getDeclaredMethods();
+    public String getObjectMethods() {
+        Method[] methods = Object.class.getDeclaredMethods();
         String[] methodNames = new String[methods.length];
 
         for (int i = 0; i < methods.length; i++) {
