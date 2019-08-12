@@ -70,7 +70,7 @@ jacocoTestCoverageVerification {
         rule {
             limit {
                 // set this to a threshold you wish to enforce
-                minimum = 0
+                minimum = 0.8
             }
         }
     }
