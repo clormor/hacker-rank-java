@@ -3,7 +3,7 @@ jobs:
 
   build:
     parallelism: 1
-    environment: [{ CC_TEST_REPORTER_ID: 9dd4f338f4ecb807d37dfa015d2133ec2ba01b3d3b016db63bcff63c21fe8bd5 }]
+    environment: [{ CC_TEST_REPORTER_ID: 1d6e572bfd6924a8d88ff5ad7fad0c9d4b4f242ce01ea8bc8e1a9c8f73d327c9 }]
     docker: [{ image: circleci/openjdk:8 }]
 
     steps:
