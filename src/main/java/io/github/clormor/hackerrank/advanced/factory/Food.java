@@ -1,4 +1,4 @@
-package io.github.clormor.hackerrank.advanced;
+package io.github.clormor.hackerrank.advanced.factory;
 
 interface Food {
     static final String pizzaType = "Someone ordered a Fast Food!";

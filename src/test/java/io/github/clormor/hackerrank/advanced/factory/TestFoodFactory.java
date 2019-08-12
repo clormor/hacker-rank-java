@@ -1,10 +1,10 @@
-package io.github.clormor.hackerrank.advanced;
+package io.github.clormor.hackerrank.advanced.factory;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import static io.github.clormor.hackerrank.advanced.Food.cakeType;
-import static io.github.clormor.hackerrank.advanced.Food.pizzaType;
+import static io.github.clormor.hackerrank.advanced.factory.Food.cakeType;
+import static io.github.clormor.hackerrank.advanced.factory.Food.pizzaType;
 import static org.junit.Assert.assertEquals;
 
 public class TestFoodFactory {
