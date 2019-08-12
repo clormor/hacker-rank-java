@@ -7,12 +7,12 @@ import static org.junit.Assert.assertEquals;
 
 public class TestHashingExamples {
 
-    SHA256Example s;
+    Sha256Example s;
     MD5Example m;
 
     @Before
     public void setup() {
-        s = new SHA256Example();
+        s = new Sha256Example();
         m = new MD5Example();
     }
 
