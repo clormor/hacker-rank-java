@@ -59,7 +59,8 @@ public class BotSavesPrincess {
     }
 
     static class Position {
-        int x, y;
+        int x;
+        int y;
 
         Position(int _x, int _y) {
             x = _x;
