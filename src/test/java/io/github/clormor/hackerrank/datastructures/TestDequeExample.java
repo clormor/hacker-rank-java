@@ -1,6 +1,5 @@
-package io.github.clormor.hackerrank;
+package io.github.clormor.hackerrank.datastructures;
 
-import io.github.clormor.hackerrank.datastructures.DequeExample;
 import org.junit.Before;
 import org.junit.Test;
 
