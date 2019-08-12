@@ -1,0 +1,8 @@
+engines:
+  checkstyle:
+    enabled: true
+    checks:
+      com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck:
+        enabled: false
+  fixme:
+    enabled: true

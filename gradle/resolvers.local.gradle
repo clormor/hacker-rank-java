@@ -18,7 +18,6 @@ final def defineResolvers = {
             ivy      "${prefix}/srcs/[artifact](-[classifier]).[ext]"
             ivy      "${prefix}/ivy-[revision].xml"
         }
-        // TODO: not sure what this is for, but the palantir-java plugin seems to need something called "publish"
         name 'publish'
     }
 }
