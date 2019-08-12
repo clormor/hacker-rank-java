@@ -1,4 +1,4 @@
-package io.github.clormor.skeleton.hackerrank.exceptions;
+package io.github.clormor.hackerrank.exceptions;
 
 public class ExceptionHandling {
 

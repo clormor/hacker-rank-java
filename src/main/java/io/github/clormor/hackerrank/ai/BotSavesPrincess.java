@@ -1,4 +1,4 @@
-package io.github.clormor.skeleton.hackerrank.ai;
+package io.github.clormor.hackerrank.ai;
 
 import com.google.common.annotations.VisibleForTesting;
 

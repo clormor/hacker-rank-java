@@ -1,10 +1,10 @@
-package io.github.clormor.skeleton.hackerrank.exceptions;
+package io.github.clormor.hackerrank.exceptions;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import static io.github.clormor.skeleton.hackerrank.exceptions.ExceptionHandling.negative_error;
-import static io.github.clormor.skeleton.hackerrank.exceptions.ExceptionHandling.zero_error;
+import static io.github.clormor.hackerrank.exceptions.ExceptionHandling.negative_error;
+import static io.github.clormor.hackerrank.exceptions.ExceptionHandling.zero_error;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 

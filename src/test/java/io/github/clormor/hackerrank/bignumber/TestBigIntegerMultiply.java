@@ -1,5 +1,6 @@
-package io.github.clormor.skeleton.hackerrank.bignumber;
+package io.github.clormor.hackerrank.bignumber;
 
+import io.github.clormor.hackerrank.bignumber.BigIntegerMultiply;
 import org.junit.Before;
 import org.junit.Test;
 

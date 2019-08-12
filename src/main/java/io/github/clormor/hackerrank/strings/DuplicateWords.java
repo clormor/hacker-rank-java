@@ -1,4 +1,4 @@
-package io.github.clormor.skeleton.hackerrank.strings;
+package io.github.clormor.hackerrank.strings;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

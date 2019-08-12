@@ -1,4 +1,4 @@
-package io.github.clormor.skeleton.hackerrank.bignumber;
+package io.github.clormor.hackerrank.bignumber;
 
 import java.math.BigInteger;
 

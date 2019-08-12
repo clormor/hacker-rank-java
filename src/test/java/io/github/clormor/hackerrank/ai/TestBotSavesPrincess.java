@@ -1,13 +1,13 @@
-package io.github.clormor.skeleton.hackerrank.ai;
+package io.github.clormor.hackerrank.ai;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import static io.github.clormor.skeleton.hackerrank.ai.BotSavesPrincess.bot_char;
-import static io.github.clormor.skeleton.hackerrank.ai.BotSavesPrincess.down_move;
-import static io.github.clormor.skeleton.hackerrank.ai.BotSavesPrincess.left_move;
-import static io.github.clormor.skeleton.hackerrank.ai.BotSavesPrincess.matrix_char;
-import static io.github.clormor.skeleton.hackerrank.ai.BotSavesPrincess.peach_char;
+import static io.github.clormor.hackerrank.ai.BotSavesPrincess.bot_char;
+import static io.github.clormor.hackerrank.ai.BotSavesPrincess.down_move;
+import static io.github.clormor.hackerrank.ai.BotSavesPrincess.left_move;
+import static io.github.clormor.hackerrank.ai.BotSavesPrincess.matrix_char;
+import static io.github.clormor.hackerrank.ai.BotSavesPrincess.peach_char;
 import static org.junit.Assert.assertEquals;
 
 public class TestBotSavesPrincess {
