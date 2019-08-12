@@ -10,8 +10,6 @@ public class DuplicateWords {
     public String removeDuplicates(String s) {
         Matcher m = p.matcher(s);
         while (m.find()) {
-            System.out.println(m.group(0));
-            System.out.println(m.group(1));
             s = s.replaceAll(m.group(0), m.group(1));
         }
         return s;
