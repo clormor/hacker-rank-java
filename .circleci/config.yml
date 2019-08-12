@@ -54,11 +54,6 @@ jobs:
           path: build/test-results/test
           when: always
 
-      - store_artifacts:
-          path: build/reports
-          destination: reports
-          when: always
-
       - run:
           name: Assemble JAR
           command: ./gradlew --info build --stacktrace --parallel --max-workers=16
