@@ -1,6 +1,7 @@
 package io.github.clormor.hackerrank.advanced;
 
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -36,6 +37,6 @@ public class SHA256Example {
     }
 
     private byte[] digest(String input) {
-        return instance.digest(input.getBytes());
+        return instance.digest(input.getBytes(StandardCharsets.UTF_8));
     }
 }
