@@ -1,4 +1,4 @@
-engines:
+plugins:
   checkstyle:
     enabled: true
     checks:
@@ -24,8 +24,8 @@ engines:
     enabled: true
     config:
       sonar.java.source: "8"
-    checks:
+      #    checks:
       # allow this repo to throw generic exceptions
-      squid:S00112:
-      enabled: false
+      #squid:S00112:
+      #enabled: false
 
