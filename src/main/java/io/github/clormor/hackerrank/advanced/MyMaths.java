@@ -4,16 +4,16 @@ import java.math.BigInteger;
 
 public class MyMaths {
 
-    private PerformOperation isOdd = (int n) -> {
+    private PerformMathsOperation isOdd = (int n) -> {
         return n % 2 != 0;
     };
 
-    private PerformOperation isPrime = (int n) -> {
+    private PerformMathsOperation isPrime = (int n) -> {
         BigInteger b = new BigInteger(Integer.toString(n));
         return b.isProbablePrime(100);
     };
 
-    private PerformOperation isPalindrome = (int n) -> {
+    private PerformMathsOperation isPalindrome = (int n) -> {
         char[] chars = Integer.toString(n).toCharArray();
         for (int i = 0; i < (chars.length / 2); i++) {
             if (chars[i] != chars[chars.length - 1 - i]) {
@@ -23,19 +23,19 @@ public class MyMaths {
         return true;
     };
 
-    PerformOperation isOdd() {
+    PerformMathsOperation isOdd() {
         return isOdd;
     }
 
-    PerformOperation isPrime() {
+    PerformMathsOperation isPrime() {
         return isPrime;
     }
 
-    PerformOperation isPalindrome() {
+    PerformMathsOperation isPalindrome() {
         return isPalindrome;
     }
 
-    boolean checker(PerformOperation op, int n) {
+    boolean checker(PerformMathsOperation op, int n) {
         return op.operation(n);
     }
 }

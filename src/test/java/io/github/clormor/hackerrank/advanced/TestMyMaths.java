@@ -17,7 +17,7 @@ public class TestMyMaths {
 
     @Test
     public void test_odd() {
-        PerformOperation op = m.isOdd();
+        PerformMathsOperation op = m.isOdd();
         assertTrue(m.checker(op, 3));
         assertFalse(m.checker(op, 4));
         assertFalse(m.checker(op, 0));
@@ -28,7 +28,7 @@ public class TestMyMaths {
 
     @Test
     public void test_prime() {
-        PerformOperation op = m.isPrime();
+        PerformMathsOperation op = m.isPrime();
         assertTrue(m.checker(op, 3));
         assertFalse(m.checker(op, 4));
         assertFalse(m.checker(op, 0));
@@ -39,7 +39,7 @@ public class TestMyMaths {
 
     @Test
     public void test_palindrome() {
-        PerformOperation op = m.isPalindrome();
+        PerformMathsOperation op = m.isPalindrome();
         assertTrue(m.checker(op, 3));
         assertTrue(m.checker(op, 4));
         assertTrue(m.checker(op, 0));
