@@ -22,10 +22,11 @@ plugins:
     enabled: true
   sonar-java:
     enabled: true
+    checks:
+      squid:S00112: # Requires dedicated exceptions even for tests
+        enabled: false
     config:
-      sonar.java.source: "8"
-      #    checks:
-      # allow this repo to throw generic exceptions
-      #squid:S00112:
-      #enabled: false
+      sonar.java.source: 1.8
+      tests_patterns:
+        - src/test/**
 
