@@ -1,8 +1,10 @@
 package io.github.clormor.hackerrank.advanced.visitor;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -10,26 +12,67 @@ public class TreeParser {
 
     Map<Integer, Integer> values;
     Map<Integer, Color> colours;
-    Map<Integer, Integer> depths;
-    Map<Integer, Set<Integer>> edgesTo;
-    Map<Integer, Tree> trees;
+    Map<Integer, Set<Integer>> allEdges;
 
     public Tree solve(int n, String[] args) {
         // map the values and colours in helper methods
         mapValues(n, args[0]);
         mapColours(n, args[1]);
 
-        // keep track of max depth - determines if a tree is node or leaf
-        mapDepthsAndEdges(n, Arrays.copyOfRange(args, 2, n + 1));
+        // parse the edge lines into numbers we can search for
+        mapAllEdges(Arrays.copyOfRange(args, 2, n + 1));
 
-        // create the tree objects
-        createTrees(n);
+        // begin depth-first search - find children of the root
+        List<Integer> edges = findNodeEdges(0);
 
-        // create the edges
-        createEdges(n);
+        // handle 1-node tree as special case
+        if (edges.size() == 0) {
+            return new TreeLeaf(values.get(0), colours.get(0), 0);
+        }
 
-        // return the tree root
-        return trees.get(0);
+        // recursively search the tree to create nodes from the root
+        TreeNode root = new TreeNode(values.get(0), colours.get(0), 0);
+        for (int child : edges) {
+            processNode(child, 1, root);
+        }
+
+        return root;
+    }
+
+    private void processNode(Integer node, int depth, TreeNode parent) {
+        List<Integer> edges = findNodeEdges(node);
+        if (edges.size() == 0) {
+            parent.addChild(new TreeLeaf(values.get(node), colours.get(node), depth));
+        } else {
+            TreeNode currentNode = new TreeNode(values.get(node), colours.get(node), depth);
+            parent.addChild(currentNode);
+            for (int child : edges) {
+                processNode(child, depth + 1, currentNode);
+            }
+        }
+    }
+
+    private List<Integer> findNodeEdges(int node) {
+        List<Integer> result = new ArrayList<>();
+        for (Set<Integer> edge : allEdges.values()) {
+            if (edge.contains(node)) {
+                edge.remove(node);
+                result.add((Integer) edge.toArray()[0]);
+                edge.clear();
+            }
+        }
+        return result;
+    }
+
+    private void mapAllEdges(String[] edgeLines) {
+        allEdges = new HashMap<>();
+        for (int i = 0; i < edgeLines.length; i++) {
+            Set<Integer> nodes = new HashSet<>();
+            String[] edge = edgeLines[i].split(" ");
+            nodes.add(Integer.parseInt(edge[0]) - 1);
+            nodes.add(Integer.parseInt(edge[1]) - 1);
+            allEdges.put(i, nodes);
+        }
     }
 
     private void mapValues(int n, String valuesLine) {
@@ -45,53 +88,6 @@ public class TreeParser {
         String[] coloursString = coloursLine.split(" ");
         for (int i = 0; i < n; i++) {
             colours.put(i, (coloursString[i].equals("0")) ? Color.RED : Color.GREEN);
-        }
-    }
-
-    private void mapDepthsAndEdges(int n, String[] edgeLines) {
-        depths = new HashMap<>(n);
-        edgesTo = new HashMap<>(n);
-
-        // Determine the depth of each node, and its edges
-        depths.put(0, 0);
-        for (int i = 0; i < n - 1; i++) {
-            String[] edgeString = edgeLines[i].split(" ");
-            int parent = Integer.parseInt(edgeString[0]) - 1;
-            int child = Integer.parseInt(edgeString[1]) - 1;
-
-            int parentDepth = depths.get(parent);
-            depths.put(child, parentDepth + 1);
-            Set<Integer> children = edgesTo.get(parent);
-            if (children == null) {
-                children = new HashSet<>();
-            }
-            children.add(child);
-            edgesTo.put(parent, children);
-        }
-    }
-
-    private void createTrees(int n) {
-        trees = new HashMap<>(n);
-        for (int i = 0; i < n; i++) {
-            // determine if node or leaf
-            Set<Integer> children = edgesTo.get(i);
-            if (children == null) {
-                trees.put(i, new TreeLeaf(values.get(i), colours.get(i), depths.get(i)));
-            } else {
-                trees.put(i, new TreeNode(values.get(i), colours.get(i), depths.get(i)));
-            }
-        }
-    }
-
-    private void createEdges(int n) {
-        for (int i = 0; i < n; i++) {
-            Set<Integer> children = edgesTo.get(i);
-            if (children != null) {
-                TreeNode parent = (TreeNode) trees.get(i);
-                for (int child : children) {
-                    parent.addChild(trees.get(child));
-                }
-            }
         }
     }
 }
