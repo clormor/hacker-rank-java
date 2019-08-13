@@ -1,4 +1,4 @@
-engines:
+plugins:
   checkstyle:
     enabled: true
     checks:
@@ -19,5 +19,7 @@ engines:
       com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck:
         enabled: false
   fixme:
+    enabled: true
+  sonar-java:
     enabled: true
 
