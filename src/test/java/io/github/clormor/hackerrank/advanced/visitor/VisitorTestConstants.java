@@ -15,10 +15,19 @@ public class VisitorTestConstants {
 
     private static final TreeNode VALUE_2_RED_DEPTH_2 = new TreeNode(VALUE_3, Color.RED, 2);
 
-    static final Tree depth_3_tree = new TreeParser().solve(9, new String[] {
+    static final Tree depth_3_tree = new TreeParser().solve(9, new String[]{
             "1 2 3 4 5 6 7 8 9",
             "0 1 1 1 0 0 0 0 1",
             "1 2", "1 3", "2 4", "2 5", "2 6", "3 7", "3 8", "3 9"});
+
+    static final Tree hacker_rank_tree = new TreeParser().solve(5, new String[]{
+            "4 7 2 5 12",
+            "0 1 0 0 1",
+            "1 2",
+            "1 3",
+            "3 4",
+            "3 5"
+    });
 
     static {
         VALUE_2_GREEN_DEPTH_1.addChild(VALUE_1_GREEN_LEAF);
