@@ -59,9 +59,26 @@ public class TestPriorityQueueExample {
         checkStudent("Maria", 3.6, 46, students.get(3));
     }
 
-    @Test (expected = RuntimeException.class)
+    @Test
+    public void its_possible_to_serve_an_empty_queue() {
+        String[] input = {
+                PriorityQueueExample.SERVED_COMMAND,
+                PriorityQueueExample.SERVED_COMMAND,
+                PriorityQueueExample.ENTER_COMMAND + " Samiha 3.85 36",
+                PriorityQueueExample.ENTER_COMMAND + " Maria 3.6 46",
+                PriorityQueueExample.SERVED_COMMAND,
+                PriorityQueueExample.SERVED_COMMAND,
+                PriorityQueueExample.SERVED_COMMAND
+        };
+
+        List<Student> students = p.getStudents(input);
+        assertEquals(0, students.size());
+    }
+
+
+    @Test(expected = RuntimeException.class)
     public void throw_runtime_exception_on_bad_command() {
-        p.getStudents(new String[] {"ioefhewoifhwe"});
+        p.getStudents(new String[]{"ioefhewoifhwe"});
     }
 
     private void checkStudent(String name, double cgpa, int id, Student student) {

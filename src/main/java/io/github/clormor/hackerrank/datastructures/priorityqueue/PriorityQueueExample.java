@@ -18,7 +18,7 @@ public class PriorityQueueExample {
             processEvent(event);
         }
         List<Student> result = new ArrayList<>(students.size());
-        while (! students.isEmpty()) {
+        while (!students.isEmpty()) {
             result.add(students.remove());
         }
         return result;
@@ -28,23 +28,26 @@ public class PriorityQueueExample {
         String[] parts = event.split(" ");
         switch (parts[0]) {
             case ENTER_COMMAND:
-                Student s1 = createStudent(parts);
-                System.out.printf("Student %s has been added%n", s1.getName());
-                students.add(s1);
+                addStudent(parts);
                 break;
             case SERVED_COMMAND:
-                Student s2 = students.remove();
-                System.out.printf("Student %s got SERVED!%n", s2.getName());
+                removeStudentIfPossible();
                 break;
             default:
                 throw new RuntimeException("Invalid command " + parts[0]);
         }
     }
 
-    private Student createStudent(String[] parts) {
-        return ImmutableStudent.of(
+    private void removeStudentIfPossible() {
+        if (! students.isEmpty()) {
+            students.remove();
+        }
+    }
+
+    private void addStudent(String[] parts) {
+        students.add(ImmutableStudent.of(
                 parts[1],
                 Double.parseDouble(parts[2]),
-                Integer.parseInt(parts[3]));
+                Integer.parseInt(parts[3])));
     }
 }
