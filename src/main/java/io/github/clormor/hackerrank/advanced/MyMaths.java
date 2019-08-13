@@ -5,7 +5,7 @@ import java.math.BigInteger;
 public class MyMaths {
 
     private PerformOperation isOdd = (int n) -> {
-        return n % 2 == 1;
+        return n % 2 != 0;
     };
 
     private PerformOperation isPrime = (int n) -> {
