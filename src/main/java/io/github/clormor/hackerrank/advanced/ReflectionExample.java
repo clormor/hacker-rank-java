@@ -1,5 +1,7 @@
 package io.github.clormor.hackerrank.advanced;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
@@ -27,15 +29,17 @@ public class ReflectionExample {
 
         class Private {
 
+            @SuppressFBWarnings
             private boolean powerOf2(int n) {
-                if (n == 1) {
+                if (n == 1 || n == 2) {
                     return true;
                 }
-                do {
+                while (n > 1) {
+                    n /= 2;
                     if (n == 2) {
                         return true;
                     }
-                } while ((n /= 2) > 1);
+                }
                 return false;
             }
         }
