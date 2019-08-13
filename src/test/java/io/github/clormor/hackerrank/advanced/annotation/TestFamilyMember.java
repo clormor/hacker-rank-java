@@ -38,6 +38,7 @@ public class TestFamilyMember {
 
     public String test_method(String role, int spend) throws InvocationTargetException, IllegalAccessException {
         for (Method m : f.getClass().getDeclaredMethods()) {
+            // when running tests via gradle, skip classes inserted by jacoco
             if (m.getName().contains("jacoco")) {
                 continue;
             }
