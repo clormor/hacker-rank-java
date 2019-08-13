@@ -7,13 +7,41 @@ public class BitSetExample {
     BitSet b1 = null;
     BitSet b2 = null;
 
-    public String transform(int n, int m, String[] instructions) {
+    BitSetOperation and = (int m, int n) -> {
+        whichOne(m).and(whichOne(n));
+    };
+
+    BitSetOperation or = (int m, int n) -> {
+        whichOne(m).or(whichOne(n));
+    };
+
+    BitSetOperation xor = (int m, int n) -> {
+        whichOne(m).xor(whichOne(n));
+    };
+
+    BitSetOperation set = (int m, int n) -> {
+        whichOne(m).set(n);
+    };
+
+    BitSetOperation flip = (int m, int n) -> {
+        whichOne(m).flip(n);
+    };
+
+    private BitSet whichOne(int n) {
+        if (n == 1) {
+            return b1;
+        } else {
+            return b2;
+        }
+    }
+
+    public String transform(int n, int m, String[] operations) {
         StringBuilder result = new StringBuilder();
         b1 = new BitSet(n);
         b2 = new BitSet(n);
 
-        for (String line : instructions) {
-            String[] op = line.split(" ");
+        for (String operation : operations) {
+            String[] op = operation.split(" ");
             String instruction = op[0];
             int a = Integer.parseInt(op[1]);
             int b = Integer.parseInt(op[2]);
@@ -26,24 +54,19 @@ public class BitSetExample {
     private String singleTransform(String instruction, int a, int b) {
         switch (instruction) {
             case "AND":
-                if (a == 1 && b == 2) b1.and(b2);
-                if (a == 2 && b == 1) b2.and(b1);
+                and.transform(a, b);
                 break;
             case "FLIP":
-                if (a == 1) b1.flip(b);
-                if (a == 2) b2.flip(b);
+                flip.transform(a, b);
                 break;
             case "OR":
-                if (a == 1 && b == 2) b1.or(b2);
-                if (a == 2 && b == 1) b2.or(b1);
+                or.transform(a, b);
                 break;
             case "SET":
-                if (a == 1) b1.set(b);
-                if (a == 2) b2.set(b);
+                set.transform(a, b);
                 break;
             case "XOR":
-                if (a == 1 && b == 2) b1.xor(b2);
-                if (a == 2 && b == 1) b2.xor(b1);
+                xor.transform(a, b);
                 break;
             default:
                 throw new IllegalArgumentException("Invalid instruction");

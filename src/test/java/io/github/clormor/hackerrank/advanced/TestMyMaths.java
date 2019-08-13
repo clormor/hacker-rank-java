@@ -23,6 +23,7 @@ public class TestMyMaths {
         assertFalse(m.checker(op, 0));
         assertTrue(m.checker(op, 13));
         assertTrue(m.checker(op, 99));
+        assertTrue(m.checker(op, -99));
     }
 
     @Test
@@ -33,6 +34,7 @@ public class TestMyMaths {
         assertFalse(m.checker(op, 0));
         assertTrue(m.checker(op, 13));
         assertFalse(m.checker(op, 99));
+        assertFalse(m.checker(op, -99));
     }
 
     @Test
@@ -46,5 +48,6 @@ public class TestMyMaths {
         assertTrue(m.checker(op, 131));
         assertFalse(m.checker(op, 132));
         assertTrue(m.checker(op, 132231));
+        assertFalse(m.checker(op, -132231));
     }
 }

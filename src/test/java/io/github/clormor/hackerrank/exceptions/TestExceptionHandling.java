@@ -23,31 +23,35 @@ public class TestExceptionHandling {
 
     @Test
     public void power_simple_test() throws Exception {
-        assertEquals(243L,e.power(3,5));
-        assertEquals(16L,e.power(2,4));
+        assertEquals(243,e.power(3,5));
+        assertEquals(16,e.power(2,4));
+        assertEquals(1, e.power(10, 0));
+        assertEquals(0, e.power(0, 10));
     }
 
     @Test
     public void power_exceptions_test() {
-        try {
-            e.power(0, 0);
-            fail("An exception should have been thrown");
-        } catch (Exception e) {
-            assertEquals(zero_error, e.getMessage());
-        }
+        try_invalid_power(0, 0, zero_error);
+        try_invalid_power(-1, -2, negative_error);
+        try_invalid_power(-1, 1, negative_error);
+        try_invalid_power(1, -2, negative_error);
+    }
 
+    private void try_invalid_power(int n, int p, String expectedMessage) {
         try {
-            e.power(-1, -2);
+            e.power(n, p);
             fail("An exception should have been thrown");
         } catch (Exception e) {
-            assertEquals(negative_error, e.getMessage());
+            assertEquals(expectedMessage, e.getMessage());
         }
+    }
 
+    private void try_invalid_divide(String m, String n, String expectedMessage) {
         try {
-            e.power(-1, 3);
+            e.divide(m, n);
             fail("An exception should have been thrown");
         } catch (Exception e) {
-            assertEquals(negative_error, e.getMessage());
+            assertEquals(expectedMessage, e.getMessage());
         }
     }
 
@@ -58,37 +62,18 @@ public class TestExceptionHandling {
 
     @Test
     public void divide_mismatch_test() {
-        try {
-            e.divide("10", "Hello");
-            fail();
-        } catch (InputMismatchException e) {
-            assertEquals(mismatch_exception, e.getMessage());
-        }
+        try_invalid_divide("10", "Hello", mismatch_exception);
+        try_invalid_divide("_d338dh", "12", mismatch_exception);
     }
 
     @Test
     public void zero_argument_test() {
-        try {
-            e.divide("0", "23");
-            fail();
-        } catch (ArithmeticException e) {
-            assertEquals(arithmetic_exception, e.getMessage());
-        }
-        try {
-            e.divide("232", "0");
-            fail();
-        } catch (ArithmeticException e) {
-            assertEquals(arithmetic_exception, e.getMessage());
-        }
+        try_invalid_divide("0", "23", arithmetic_exception);
+        try_invalid_divide("23", "0", arithmetic_exception);
     }
 
     @Test
     public void divide_mismatch_and_0_throws_mismatch_exception() {
-        try {
-            e.divide("23.233", "0");
-            fail();
-        } catch (InputMismatchException e) {
-            assertEquals(mismatch_exception, e.getMessage());
-        }
+        try_invalid_divide("23.232", "0", mismatch_exception);
     }
 }

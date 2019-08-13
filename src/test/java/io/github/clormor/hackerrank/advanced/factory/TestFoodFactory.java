@@ -18,10 +18,30 @@ public class TestFoodFactory {
 
     @Test
     public void simple_test() {
-        Food p = f.getFood("pizza");
-        assertEquals(pizzaType, p.getType());
+        testAndExpect("pizza", pizzaType);
+        testAndExpect("cake", cakeType);
+        testAndExpect("Pizza", pizzaType);
+        testAndExpect("cAke", cakeType);
+        testAndExpect("PIZZA", pizzaType);
+        testAndExpect("CakE", cakeType);
+    }
 
-        Food c = f.getFood("cake");
-        assertEquals(cakeType, c.getType());
+    private void testAndExpect(String order, String expectedType) {
+        assertEquals(expectedType, f.getFood(order).getType());
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void invalid_food_test() {
+        f.getFood("Chips");
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void order_not_trimmed_test() {
+        f.getFood(" pizza");
+    }
+
+    @Test (expected = NullPointerException.class)
+    public void order_does_not_like_null() {
+        f.getFood(null);
     }
 }

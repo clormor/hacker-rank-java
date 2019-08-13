@@ -3,6 +3,8 @@ package io.github.clormor.hackerrank.advanced;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.security.InvalidAlgorithmParameterException;
+
 import static org.junit.Assert.assertEquals;
 
 public class TestHashingExamples {
@@ -34,6 +36,16 @@ public class TestHashingExamples {
         test_md5_hashes(
                 "2da2d1e0ce7b4951a858ed2d547ef485",
                 "Javarmi123");
+    }
+
+    @Test (expected = RuntimeException.class)
+    public void test_invalid_algorithm() {
+        new AbstractHashingExample("blah") {
+            @Override
+            public int getExpectedLength() {
+                return 0;
+            }
+        }.digest("foo");
     }
 
     private void test_sha256_hashes(String expected, String input) {
