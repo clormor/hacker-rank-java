@@ -38,6 +38,9 @@ public class TestFamilyMember {
 
     public String test_method(String role, int spend) throws InvocationTargetException, IllegalAccessException {
         for (Method m : f.getClass().getDeclaredMethods()) {
+            if (m.getName().contains("jacoco")) {
+                continue;
+            }
             FamilyBudget budget = getBudget(m);
             if (role.equals(budget.userRole())) {
                 return (String) m.invoke(f, budget.budgetLimit(), spend);

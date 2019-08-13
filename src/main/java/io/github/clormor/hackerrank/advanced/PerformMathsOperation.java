@@ -1,5 +1,5 @@
 package io.github.clormor.hackerrank.advanced;
 
-interface PerformOperation {
+interface PerformMathsOperation {
     boolean operation(int n);
 }
