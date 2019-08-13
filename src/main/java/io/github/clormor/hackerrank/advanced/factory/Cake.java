@@ -3,6 +3,6 @@ package io.github.clormor.hackerrank.advanced.factory;
 class Cake implements Food {
     @Override
     public String getType() {
-        return cakeType;
+        return CAKE_TYPE;
     }
 }

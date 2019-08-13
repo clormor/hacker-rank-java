@@ -1,7 +1,7 @@
 package io.github.clormor.hackerrank.advanced.factory;
 
-interface Food {
-    static final String pizzaType = "Someone ordered a Fast Food!";
-    static final String cakeType = "Someone ordered a Dessert!";
-    public String getType();
+abstract class Food {
+    static final String PIZZA_TYPE = "Someone ordered a Fast Food!";
+    static final String CAKE_TYPE = "Someone ordered a Dessert!";
+    public abstract String getType();
 }

@@ -24,4 +24,8 @@ plugins:
     enabled: true
     config:
       sonar.java.source: "8"
+    checks:
+      # allow this repo to throw generic exceptions
+      squid:S00112:
+      enabled: false
 

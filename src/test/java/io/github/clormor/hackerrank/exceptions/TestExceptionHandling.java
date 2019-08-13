@@ -3,12 +3,10 @@ package io.github.clormor.hackerrank.exceptions;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.InputMismatchException;
-
-import static io.github.clormor.hackerrank.exceptions.ExceptionHandling.arithmetic_exception;
-import static io.github.clormor.hackerrank.exceptions.ExceptionHandling.mismatch_exception;
-import static io.github.clormor.hackerrank.exceptions.ExceptionHandling.negative_error;
-import static io.github.clormor.hackerrank.exceptions.ExceptionHandling.zero_error;
+import static io.github.clormor.hackerrank.exceptions.ExceptionHandling.ARITHMETIC_EXCEPTION;
+import static io.github.clormor.hackerrank.exceptions.ExceptionHandling.MISMATCH_EXCEPTION;
+import static io.github.clormor.hackerrank.exceptions.ExceptionHandling.NEGATIVE_ERROR;
+import static io.github.clormor.hackerrank.exceptions.ExceptionHandling.ZERO_ERROR;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
@@ -31,10 +29,10 @@ public class TestExceptionHandling {
 
     @Test
     public void power_exceptions_test() {
-        try_invalid_power(0, 0, zero_error);
-        try_invalid_power(-1, -2, negative_error);
-        try_invalid_power(-1, 1, negative_error);
-        try_invalid_power(1, -2, negative_error);
+        try_invalid_power(0, 0, ZERO_ERROR);
+        try_invalid_power(-1, -2, NEGATIVE_ERROR);
+        try_invalid_power(-1, 1, NEGATIVE_ERROR);
+        try_invalid_power(1, -2, NEGATIVE_ERROR);
     }
 
     private void try_invalid_power(int n, int p, String expectedMessage) {
@@ -62,18 +60,18 @@ public class TestExceptionHandling {
 
     @Test
     public void divide_mismatch_test() {
-        try_invalid_divide("10", "Hello", mismatch_exception);
-        try_invalid_divide("_d338dh", "12", mismatch_exception);
+        try_invalid_divide("10", "Hello", MISMATCH_EXCEPTION);
+        try_invalid_divide("_d338dh", "12", MISMATCH_EXCEPTION);
     }
 
     @Test
     public void zero_argument_test() {
-        try_invalid_divide("0", "23", arithmetic_exception);
-        try_invalid_divide("23", "0", arithmetic_exception);
+        try_invalid_divide("0", "23", ARITHMETIC_EXCEPTION);
+        try_invalid_divide("23", "0", ARITHMETIC_EXCEPTION);
     }
 
     @Test
     public void divide_mismatch_and_0_throws_mismatch_exception() {
-        try_invalid_divide("23.232", "0", mismatch_exception);
+        try_invalid_divide("23.232", "0", MISMATCH_EXCEPTION);
     }
 }

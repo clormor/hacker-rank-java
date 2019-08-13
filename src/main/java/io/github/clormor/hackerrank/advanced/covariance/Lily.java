@@ -2,10 +2,10 @@ package io.github.clormor.hackerrank.advanced.covariance;
 
 public class Lily extends Flower {
 
-    static final String lilyName = "Lily";
+    static final String LILY_NAME = "Lily";
 
     @Override
     public String whatsYourName() {
-        return lilyName;
+        return LILY_NAME;
     }
 }

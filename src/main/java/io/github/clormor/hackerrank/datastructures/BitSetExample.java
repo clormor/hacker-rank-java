@@ -40,8 +40,8 @@ public class BitSetExample {
         b1 = new BitSet(n);
         b2 = new BitSet(n);
 
-        for (String operation : operations) {
-            String[] op = operation.split(" ");
+        for (int i = 0; i < m; i++) {
+            String[] op = operations[i].split(" ");
             String instruction = op[0];
             int a = Integer.parseInt(op[1]);
             int b = Integer.parseInt(op[2]);
