@@ -3,8 +3,8 @@ package io.github.clormor.hackerrank.advanced.factory;
 import org.junit.Before;
 import org.junit.Test;
 
-import static io.github.clormor.hackerrank.advanced.factory.Food.CAKE_TYPE;
-import static io.github.clormor.hackerrank.advanced.factory.Food.PIZZA_TYPE;
+import static io.github.clormor.hackerrank.advanced.factory.Cake.CAKE_TYPE;
+import static io.github.clormor.hackerrank.advanced.factory.Pizza.PIZZA_TYPE;
 import static org.junit.Assert.assertEquals;
 
 public class TestFoodFactory {
