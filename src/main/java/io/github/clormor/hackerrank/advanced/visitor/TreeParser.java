@@ -10,6 +10,7 @@ public class TreeParser {
     Map<Integer, Color> colours;
     Map<Integer, Integer> depths;
     Map<Integer, Integer> edges;
+    Map<Integer, Tree> trees;
 
     public Tree solve(int n, String[] args) {
         // map the values and colours in helper methods
@@ -19,8 +20,14 @@ public class TreeParser {
         // keep track of max depth - determines if a tree is node or leaf
         int maxDepth = mapDepthsAndEdges(n, Arrays.copyOfRange(args, 2, n + 1));
 
-        // Instantiate the trees, return the root
-        return createTrees(n, maxDepth);
+        // Create the tree objects
+        createTrees(n, maxDepth);
+
+        // Create edges between trees
+        createEdges(n);
+
+        // return the tree root
+        return trees.get(0);
     }
 
     private void mapValues(int n, String valuesLine) {
@@ -60,31 +67,29 @@ public class TreeParser {
         return maxDepth;
     }
 
-    private Tree createTrees(int n, int maxDepth) {
-
-        Map<Integer, Tree> trees = new HashMap<>(n);
+    private void createTrees(int n, int maxDepth) {
+        trees = new HashMap<>(n);
 
         for (int i = 0; i < n; i++) {
-            Tree t;
-
-            // calculate depth - determine if node or leaf
+            // determine if node or leaf
             int depth = depths.get(i);
             if (depths.get(i) == maxDepth) {
-                t = new TreeLeaf(values.get(i), colours.get(i), depth);
+                trees.put(i, new TreeLeaf(values.get(i), colours.get(i), depth));
             } else {
-                t = new TreeNode(values.get(i), colours.get(i), depth);
+                trees.put(i, new TreeNode(values.get(i), colours.get(i), depth));
             }
+        }
+    }
 
+    private void createEdges(int n) {
+        for (int i = 0; i < n; i++) {
             // find edges, add this tree to its parent
             int parent = edges.getOrDefault(i, -1);
             if (parent != -1) {
                 TreeNode parentNode = (TreeNode) trees.get(parent);
-                parentNode.addChild(t);
+                Tree child = trees.get(i);
+                parentNode.addChild(child);
             }
-
-            trees.put(i, t);
         }
-
-        return trees.get(0);
     }
 }
