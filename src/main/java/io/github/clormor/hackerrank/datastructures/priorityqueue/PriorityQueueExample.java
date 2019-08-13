@@ -1,10 +1,9 @@
 package io.github.clormor.hackerrank.datastructures.priorityqueue;
 
+import static io.github.clormor.hackerrank.datastructures.priorityqueue.Student.COMPARE_STUDENTS;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
-
-import static io.github.clormor.hackerrank.datastructures.priorityqueue.Student.COMPARE_STUDENTS;
 
 public class PriorityQueueExample {
     static final String ENTER_COMMAND = "ENTER";
@@ -39,7 +38,7 @@ public class PriorityQueueExample {
     }
 
     private void removeStudentIfPossible() {
-        if (! students.isEmpty()) {
+        if (!students.isEmpty()) {
             students.remove();
         }
     }
