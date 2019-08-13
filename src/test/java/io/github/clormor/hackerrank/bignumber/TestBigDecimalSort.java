@@ -34,6 +34,9 @@ public class TestBigDecimalSort {
         assertEquals("-3", result[1]);
     }
 
+    /**
+     * One of the tests annoyingly and subversively throws in nulls.
+     */
     @Test
     public void hacker_rank_test() {
         String[] result = s.sort(new String[] {

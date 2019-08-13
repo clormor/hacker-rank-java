@@ -1,0 +1,32 @@
+plugins:
+  checkstyle:
+    enabled: true
+    checks:
+      # disable javadoc checks for this repo
+      com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck:
+        enabled: false
+      # disable name checks for this repo
+      com.puppycrawl.tools.checkstyle.checks.naming.LocalVariableNameCheck:
+        enabled: false
+      com.puppycrawl.tools.checkstyle.checks.naming.ParameterNameCheck:
+        enabled: false
+      com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck:
+        enabled: false
+      # allow multiple variables to be declared on one line in this repo
+      com.puppycrawl.tools.checkstyle.checks.coding.MultipleVariableDeclarationsCheck:
+        enabled: false
+      # allow lazy block statements in this repo
+      com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck:
+        enabled: false
+  fixme:
+    enabled: true
+  sonar-java:
+    enabled: true
+    checks:
+      squid:S00112: # Requires dedicated exceptions even for tests
+        enabled: false
+    config:
+      sonar.java.source: 1.8
+      tests_patterns:
+        - src/test/**
+

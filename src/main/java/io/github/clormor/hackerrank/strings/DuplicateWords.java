@@ -5,7 +5,9 @@ import java.util.regex.Pattern;
 
 public class DuplicateWords {
 
-    static final Pattern p = Pattern.compile("((?<!\\w)\\w+)(\\s+\\1(?!\\w))+", Pattern.CASE_INSENSITIVE);
+    static final Pattern p = Pattern.compile(
+            "((?<!\\w)\\w+)(\\s+\\1(?!\\w))+",
+            Pattern.CASE_INSENSITIVE);
 
     public String removeDuplicates(String s) {
         Matcher m = p.matcher(s);
