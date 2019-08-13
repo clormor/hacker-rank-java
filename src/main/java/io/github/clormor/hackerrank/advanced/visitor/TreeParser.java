@@ -54,12 +54,17 @@ public class TreeParser {
 
     private List<Integer> findNodeEdges(int node) {
         List<Integer> result = new ArrayList<>();
-        for (Set<Integer> edge : allEdges.values()) {
+        List<Integer> keysToRemove = new ArrayList<>();
+        for (Integer key : allEdges.keySet()) {
+            Set<Integer> edge = allEdges.get(key);
             if (edge.contains(node)) {
                 edge.remove(node);
                 result.add((Integer) edge.toArray()[0]);
-                edge.clear();
+                keysToRemove.add(key);
             }
+        }
+        for (Integer key : keysToRemove) {
+            allEdges.remove(key);
         }
         return result;
     }
