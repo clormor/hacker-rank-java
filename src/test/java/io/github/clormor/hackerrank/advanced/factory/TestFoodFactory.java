@@ -3,8 +3,8 @@ package io.github.clormor.hackerrank.advanced.factory;
 import org.junit.Before;
 import org.junit.Test;
 
-import static io.github.clormor.hackerrank.advanced.factory.Food.cakeType;
-import static io.github.clormor.hackerrank.advanced.factory.Food.pizzaType;
+import static io.github.clormor.hackerrank.advanced.factory.Cake.CAKE_TYPE;
+import static io.github.clormor.hackerrank.advanced.factory.Pizza.PIZZA_TYPE;
 import static org.junit.Assert.assertEquals;
 
 public class TestFoodFactory {
@@ -18,12 +18,12 @@ public class TestFoodFactory {
 
     @Test
     public void simple_test() {
-        testAndExpect("pizza", pizzaType);
-        testAndExpect("cake", cakeType);
-        testAndExpect("Pizza", pizzaType);
-        testAndExpect("cAke", cakeType);
-        testAndExpect("PIZZA", pizzaType);
-        testAndExpect("CakE", cakeType);
+        testAndExpect("pizza", PIZZA_TYPE);
+        testAndExpect("cake", CAKE_TYPE);
+        testAndExpect("Pizza", PIZZA_TYPE);
+        testAndExpect("cAke", CAKE_TYPE);
+        testAndExpect("PIZZA", PIZZA_TYPE);
+        testAndExpect("CakE", CAKE_TYPE);
     }
 
     private void testAndExpect(String order, String expectedType) {

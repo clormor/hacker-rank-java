@@ -1,4 +1,4 @@
-engines:
+plugins:
   checkstyle:
     enabled: true
     checks:
@@ -20,4 +20,13 @@ engines:
         enabled: false
   fixme:
     enabled: true
+  sonar-java:
+    enabled: true
+    checks:
+      squid:S00112: # Requires dedicated exceptions even for tests
+        enabled: false
+    config:
+      sonar.java.source: 1.8
+      tests_patterns:
+        - src/test/**
 

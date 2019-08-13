@@ -2,7 +2,7 @@ package io.github.clormor.hackerrank.advanced;
 
 public class Sha256Example extends AbstractHashingExample {
 
-    static final int expectedLength = 64;
+    static final int EXPECTED_LENGTH = 64;
 
     public Sha256Example() {
         super(SHA_256);
@@ -10,6 +10,6 @@ public class Sha256Example extends AbstractHashingExample {
 
     @Override
     public int getExpectedLength() {
-        return expectedLength;
+        return EXPECTED_LENGTH;
     }
 }

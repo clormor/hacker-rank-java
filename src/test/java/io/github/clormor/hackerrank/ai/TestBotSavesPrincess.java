@@ -5,17 +5,16 @@ import com.google.common.collect.Sets;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.math.BigInteger;
 import java.util.List;
 import java.util.Set;
 
-import static io.github.clormor.hackerrank.ai.BotSavesPrincess.bot_char;
-import static io.github.clormor.hackerrank.ai.BotSavesPrincess.down_move;
-import static io.github.clormor.hackerrank.ai.BotSavesPrincess.left_move;
-import static io.github.clormor.hackerrank.ai.BotSavesPrincess.matrix_char;
-import static io.github.clormor.hackerrank.ai.BotSavesPrincess.peach_char;
-import static io.github.clormor.hackerrank.ai.BotSavesPrincess.right_move;
-import static io.github.clormor.hackerrank.ai.BotSavesPrincess.up_move;
+import static io.github.clormor.hackerrank.ai.BotSavesPrincess.BOT_CHAR;
+import static io.github.clormor.hackerrank.ai.BotSavesPrincess.DOWN_MOVE;
+import static io.github.clormor.hackerrank.ai.BotSavesPrincess.LEFT_MOVE;
+import static io.github.clormor.hackerrank.ai.BotSavesPrincess.MATRIX_CHAR;
+import static io.github.clormor.hackerrank.ai.BotSavesPrincess.PEACH_CHAR;
+import static io.github.clormor.hackerrank.ai.BotSavesPrincess.RIGHT_MOVE;
+import static io.github.clormor.hackerrank.ai.BotSavesPrincess.UP_MOVE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
@@ -25,28 +24,28 @@ public class TestBotSavesPrincess {
     BotSavesPrincess b;
 
     static char[][] game_1 = {
-            {matrix_char, matrix_char, matrix_char},
-            {matrix_char, bot_char, matrix_char},
-            {peach_char, matrix_char, matrix_char},
+            {MATRIX_CHAR, MATRIX_CHAR, MATRIX_CHAR},
+            {MATRIX_CHAR, BOT_CHAR, MATRIX_CHAR},
+            {PEACH_CHAR, MATRIX_CHAR, MATRIX_CHAR},
     };
 
     static char[][] game_2 = {
-            {matrix_char, matrix_char, matrix_char, peach_char},
-            {matrix_char, matrix_char, matrix_char, matrix_char},
-            {matrix_char, matrix_char, matrix_char, matrix_char},
-            {matrix_char, bot_char, matrix_char, matrix_char},
+            {MATRIX_CHAR, MATRIX_CHAR, MATRIX_CHAR, PEACH_CHAR},
+            {MATRIX_CHAR, MATRIX_CHAR, MATRIX_CHAR, MATRIX_CHAR},
+            {MATRIX_CHAR, MATRIX_CHAR, MATRIX_CHAR, MATRIX_CHAR},
+            {MATRIX_CHAR, BOT_CHAR, MATRIX_CHAR, MATRIX_CHAR},
     };
 
     static char[][] no_princess_matrix = {
-            {matrix_char, matrix_char, matrix_char},
-            {matrix_char, bot_char, matrix_char},
-            {matrix_char, matrix_char, matrix_char},
+            {MATRIX_CHAR, MATRIX_CHAR, MATRIX_CHAR},
+            {MATRIX_CHAR, BOT_CHAR, MATRIX_CHAR},
+            {MATRIX_CHAR, MATRIX_CHAR, MATRIX_CHAR},
     };
 
     static char[][] no_bot_matrix = {
-            {matrix_char, matrix_char, peach_char},
-            {matrix_char, matrix_char, matrix_char},
-            {matrix_char, matrix_char, matrix_char},
+            {MATRIX_CHAR, MATRIX_CHAR, PEACH_CHAR},
+            {MATRIX_CHAR, MATRIX_CHAR, MATRIX_CHAR},
+            {MATRIX_CHAR, MATRIX_CHAR, MATRIX_CHAR},
     };
 
     @Before
@@ -57,7 +56,7 @@ public class TestBotSavesPrincess {
     @Test
     public void test_next_move() {
         String expected = new StringBuilder()
-                .append(down_move)
+                .append(DOWN_MOVE)
                 .toString();
 
         runNextMoveTest(game_1,expected);
@@ -66,9 +65,9 @@ public class TestBotSavesPrincess {
     @Test
     public void test_game_1() {
         String expected = new StringBuilder()
-                .append(down_move)
+                .append(DOWN_MOVE)
                 .append(System.lineSeparator())
-                .append(left_move)
+                .append(LEFT_MOVE)
                 .append(System.lineSeparator())
                 .toString();
 
@@ -78,15 +77,15 @@ public class TestBotSavesPrincess {
     @Test
     public void test_game_2() {
         String expected = new StringBuilder()
-                .append(up_move)
+                .append(UP_MOVE)
                 .append(System.lineSeparator())
-                .append(up_move)
+                .append(UP_MOVE)
                 .append(System.lineSeparator())
-                .append(up_move)
+                .append(UP_MOVE)
                 .append(System.lineSeparator())
-                .append(right_move)
+                .append(RIGHT_MOVE)
                 .append(System.lineSeparator())
-                .append(right_move)
+                .append(RIGHT_MOVE)
                 .append(System.lineSeparator())
                 .toString();
 
@@ -140,8 +139,8 @@ public class TestBotSavesPrincess {
     }
 
     private void runNextMoveTest(char[][] matrix, String expected) {
-        BotSavesPrincess.Position peach = b.locateTarget(matrix.length, matrix, peach_char);
-        BotSavesPrincess.Position bot = b.locateTarget(matrix.length, matrix, bot_char);
+        BotSavesPrincess.Position peach = b.locateTarget(matrix.length, matrix, PEACH_CHAR);
+        BotSavesPrincess.Position bot = b.locateTarget(matrix.length, matrix, BOT_CHAR);
         String result = b.move(bot, peach).lastMove;
         assertEquals(expected, result);
     }
