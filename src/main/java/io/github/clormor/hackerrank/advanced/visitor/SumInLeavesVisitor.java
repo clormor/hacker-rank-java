@@ -11,7 +11,7 @@ public class SumInLeavesVisitor extends TreeVis {
 
     @Override
     public void visitNode(TreeNode node) {
-
+        // Only sum leaves, do nothing here.
     }
 
     @Override

@@ -5,7 +5,8 @@ import java.math.BigInteger;
 public class ProductOfRedNodesVisitor extends TreeVis {
 
     BigInteger result = new BigInteger("1");
-    static final BigInteger BIG_INT_MOD = new BigInteger(Integer.toString((int) Math.pow(10, 9) + 7));
+    static final BigInteger BIG_INT_MOD = new BigInteger(
+            Integer.toString((int) Math.pow(10, 9) + 7));
 
     public int getResult() {
         return result.mod(BIG_INT_MOD).intValue();
