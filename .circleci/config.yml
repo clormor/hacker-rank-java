@@ -86,10 +86,9 @@ jobs:
           name: Uploading to maven staging repository
           command: ./gradlew --info --refresh-dependencies clean uploadArchives
 
-      # un-comment this and enable the nexus-staging plugin to automatically release staged repositories from circle builds
-      #- run:
-      #    name: Releasing archives from staging repository
-      #    command: ./gradlew --info closeAndReleaseRepository
+      - run:
+          name: Releasing archives from staging repository
+          command: ./gradlew --info closeAndReleaseRepository
 
 workflows:
   version: 2
