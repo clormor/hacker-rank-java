@@ -37,9 +37,15 @@ public class TreeParser {
             Tree child;
             Set<Integer> grandChildren = allEdges.get(childId);
             if (grandChildren != null && grandChildren.size() == 0) {
-                child = new TreeLeaf(values[childId - 1], colours[childId - 1], parent.getDepth() + 1);
+                child = new TreeLeaf(
+                        values[childId - 1],
+                        colours[childId - 1],
+                        parent.getDepth() + 1);
             } else {
-                child = new TreeNode(values[childId - 1], colours[childId - 1], parent.getDepth() + 1);
+                child = new TreeNode(
+                        values[childId - 1],
+                        colours[childId - 1],
+                        parent.getDepth() + 1);
             }
             parent.addChild(child);
             if (child instanceof TreeNode) {
@@ -55,18 +61,10 @@ public class TreeParser {
             int a = Integer.parseInt(edge[0]);
             int b = Integer.parseInt(edge[1]);
 
-            Set<Integer> as = allEdges.get(a);
-            if (as == null) {
-                as = new HashSet<>();
-                allEdges.put(a, as);
-            }
+            Set<Integer> as = allEdges.computeIfAbsent(a, k -> new HashSet<Integer>());
             as.add(b);
 
-            Set<Integer> bs = allEdges.get(b);
-            if (bs == null) {
-                bs = new HashSet<>();
-                allEdges.put(b, bs);
-            }
+            Set<Integer> bs = allEdges.computeIfAbsent(b, k -> new HashSet<Integer>());
             bs.add(a);
         }
     }
