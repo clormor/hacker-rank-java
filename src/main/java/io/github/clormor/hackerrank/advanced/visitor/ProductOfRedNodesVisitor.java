@@ -19,7 +19,7 @@ public class ProductOfRedNodesVisitor extends TreeVis {
 
     private void processIfRed(Tree t) {
         if (t.getColor().equals(Color.RED)) {
-            result = (result % MOD) * (t.getValue() % MOD);
+            result = (result * t.getValue()) % MOD;
         }
     }
 }
