@@ -36,7 +36,7 @@ public class TreeParser {
             allEdges.get(childId).remove(parentId);
             Tree child;
             Set<Integer> grandChildren = allEdges.get(childId);
-            if (grandChildren != null && grandChildren.size() == 0) {
+            if (grandChildren.size() == 0) {
                 child = new TreeLeaf(
                         values[childId - 1],
                         colours[childId - 1],

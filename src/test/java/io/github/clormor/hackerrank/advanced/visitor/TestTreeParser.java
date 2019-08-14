@@ -16,6 +16,12 @@ public class TestTreeParser {
     }
 
     @Test
+    public void very_simple_solve_test() {
+        String[] input = {"4", "0"};
+        checkTree(4, Color.RED, 0, t.solve(1, input));
+    }
+
+    @Test
     public void depth_1_solve_test() {
         String[] input = {"4 6 7", "0 1 1", "1 2", "1 3"};
         Tree result = t.solve(input.length - 1, input);
