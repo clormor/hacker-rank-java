@@ -57,6 +57,18 @@ public class TestTreeParser {
         assertEquals(45,v.getResult());
     }
 
+    @Test
+    public void because_obviously_the_edges_are_undirected() {
+        String[] input = {
+                "1 2 3 4 5 6 7 8 9",
+                "0 1 1 1 0 0 0 0 1",
+                "1 2", "1 3", "4 2", "4 5", "2 6", "2 7", "3 8", "3 9"};
+        Tree result = t.solve(input.length - 1, input);
+        result.accept(v);
+        // all nodes should appear in this tree
+        assertEquals(45,v.getResult());
+    }
+
     private void checkTree(int expectedValue, Color expectedColour, int expectedDepth, Tree t) {
         assertEquals(expectedDepth, t.getDepth());
         assertEquals(expectedValue, t.getValue());
