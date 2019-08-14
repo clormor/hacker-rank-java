@@ -1,10 +1,8 @@
 package io.github.clormor.hackerrank.advanced.visitor;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -20,10 +18,10 @@ public class TreeParser {
         mapColours(n, args[1]);
 
         // parse the edge lines into numbers we can search for
-        mapAllEdges(Arrays.copyOfRange(args, 2, n + 1));
+        mapAllEdges(args);
 
         // begin depth-first search - find children of the root
-        List<Integer> edges = findNodeEdges(0);
+        Set<Integer> edges = findNodeEdges(0);
 
         // handle 1-node tree as special case
         if (edges.size() == 0) {
@@ -40,7 +38,7 @@ public class TreeParser {
     }
 
     private void processNode(Integer node, int depth, TreeNode parent) {
-        List<Integer> edges = findNodeEdges(node);
+        Set<Integer> edges = findNodeEdges(node);
         if (edges.size() == 0) {
             parent.addChild(new TreeLeaf(values.get(node), colours.get(node), depth));
         } else {
@@ -52,31 +50,37 @@ public class TreeParser {
         }
     }
 
-    private List<Integer> findNodeEdges(int node) {
-        List<Integer> result = new ArrayList<>();
-        List<Integer> keysToRemove = new ArrayList<>();
-        for (Integer key : allEdges.keySet()) {
-            Set<Integer> edge = allEdges.get(key);
-            if (edge.contains(node)) {
-                edge.remove(node);
-                result.add((Integer) edge.toArray()[0]);
-                keysToRemove.add(key);
-            }
+    private Set<Integer> findNodeEdges(int node) {
+        Set<Integer> result = allEdges.get(node);
+        if (result == null) {
+            return new HashSet<>();
         }
-        for (Integer key : keysToRemove) {
-            allEdges.remove(key);
+        for (Integer i : result) {
+            allEdges.get(i).remove(node);
         }
         return result;
     }
 
     private void mapAllEdges(String[] edgeLines) {
         allEdges = new HashMap<>();
-        for (int i = 0; i < edgeLines.length; i++) {
-            Set<Integer> nodes = new HashSet<>();
+        for (int i = 2; i < edgeLines.length; i++) {
             String[] edge = edgeLines[i].split(" ");
-            nodes.add(Integer.parseInt(edge[0]) - 1);
-            nodes.add(Integer.parseInt(edge[1]) - 1);
-            allEdges.put(i, nodes);
+            int a = Integer.parseInt(edge[0]) - 1;
+            int b = Integer.parseInt(edge[1]) - 1;
+
+            Set<Integer> as = allEdges.get(a);
+            if (as == null) {
+                as = new HashSet<>();
+                allEdges.put(a, as);
+            }
+            as.add(b);
+
+            Set<Integer> bs = allEdges.get(b);
+            if (bs == null) {
+                bs = new HashSet<>();
+                allEdges.put(b, bs);
+            }
+            bs.add(a);
         }
     }
 
